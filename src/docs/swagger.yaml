@@ -1,0 +1,318 @@
+openapi: 3.0.0
+info:
+  title: Nodejs Api for FMCG
+  description: 'TODO: Add Description'
+  contact: {}
+  version: '1.0'
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: [] 
+servers:
+- url: http://localhost:3000/api
+  variables: {}
+paths:
+  /login:
+    post:
+      tags:
+      - APIs
+      summary: User Login
+      description: 'Login'
+      operationId: login
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginRequest'
+            example: '{"user_email":"yogendra@gmail.com","user_password":"123456"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /getCustomersList:
+    post:
+      tags:
+      - APIs
+      summary: Get Customers List
+      description: 'Customers List'
+      operationId: getCustomersList
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2ODA1NTc1NDYsImV4cCI6MTY4MDU2NDc0Nn0.8K2iZ5HkxqOyBqryZvXs7yY34ZKuO638WTYjkbDlA34
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getCustomersListRequest'
+            example: '{"pagesize":"3","page":"1","role":"4"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /getItems:
+    post:
+      tags:
+      - APIs
+      summary: Get Items List
+      description: 'Items List'
+      operationId: getItemsList
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2ODA1NTc1NDYsImV4cCI6MTY4MDU2NDc0Nn0.8K2iZ5HkxqOyBqryZvXs7yY34ZKuO638WTYjkbDlA34
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/getItemListRequest'
+            example: '{"pagesize":"3","page":"1","category_id":"3","product_name":"bas","price_range":"50-60"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /deleteItem/1:
+    delete:
+      tags:
+      - APIs
+      summary: Delete Item
+      description: 'Use this api for delete item'
+      operationId: DeleteItem
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2ODA1NDk5MjksImV4cCI6MTY4MDU1NzEyOX0.D9zf-oVbzPgVIq5CqrKSQOe3ckioOVvZHpwj_0sdUy8
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /getItemById/1:    
+    get:
+      tags:
+      - APIs
+      summary: Get item by id
+      description: 'Get item detail'
+      operationId: GetItemById
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2ODA1NDk5MjksImV4cCI6MTY4MDU1NzEyOX0.D9zf-oVbzPgVIq5CqrKSQOe3ckioOVvZHpwj_0sdUy8
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /createItem:
+    post:
+      tags:
+      - APIs
+      summary: Add Items
+      description: 'Add Items'
+      operationId: addItem
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: application/json
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX2lkIjoxLCJpYXQiOjE2ODA1NTc1NDYsImV4cCI6MTY4MDU2NDc0Nn0.8K2iZ5HkxqOyBqryZvXs7yY34ZKuO638WTYjkbDlA34
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/addItemRequest'
+            example: '{"product_id" : "4","brand_id" : "3","user_id" : "2","mrp" : "80","discount" : "10","price" : "72","quantity" : "50","sold" : "10","available" : "40","defective" : "0"}'
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    loginRequest:
+      title: loginRequest
+      required:
+      - user_email
+      - user_password
+      type: object
+      properties:
+        user_password:
+          type: string
+        user_password:
+          type: string
+      example:
+        user_password: yogendra@gmail.com
+        user_password: 123456
+    getItemListRequest:
+      title: getItemListRequest
+      required:
+      - pagesize
+      - page
+      - category_id
+      - product_name
+      - price_range
+      type: object
+      properties:
+        pagesize:
+          type: string
+        page:
+          type: string
+        category_id:
+          type: string
+        product_name:
+          type: string
+        price_range:
+          type: string
+      example:
+        pagesize: 3
+        page: 1
+        category_id: 3
+        product_name: bas
+        price_range: 50-60
+    addItemRequest:
+      title: addItemRequest
+      required:
+      - product_id
+      - brand_id
+      - user_id
+      - mrp
+      - discount
+      - price
+      - quantity
+      - sold
+      - available
+      - defective
+      type: object
+      properties:
+        product_id:
+          type: string
+        brand_id:
+          type: string
+        user_id:
+          type: string
+        mrp:
+          type: string
+        discount:
+          type: string
+        price:
+          type: string
+        quantity:
+          type: string
+        sold:
+          type: string
+        available:
+          type: string
+        defective:
+          type: string
+      example:
+        product_id: 4
+        brand_id: 3
+        user_id: 2
+        mrp: 80
+        discount: 10
+        price: 72
+        quantity: 50
+        sold: 10
+        available: 40
+        defective: 0
+tags:
+- name: APIs
+  description: ''
